@@ -48,7 +48,8 @@ export default {
             items: [
                 { title: 'Dashboard', icon: 'mdi-view-dashboard' , route : '/' },
                 { title: 'Live Submissions', icon: 'mdi-image' , route : '/live-subissions'},
-                { title: 'Problems', icon: 'mdi-help-box' , route : '/live-subissions'},
+                { title: 'Submissions', icon: 'mdi-help-box' , route : '/submissions'},
+                { title: 'Search Submissions', icon: 'mdi-help-box' , route : '/search-submissions'},
             ],
             right: null,
         }

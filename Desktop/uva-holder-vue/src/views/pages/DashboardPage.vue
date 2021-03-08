@@ -190,14 +190,11 @@ export default {
                 this.barChartData[0].data.push(data.verdictCount[count]);
             }
             
-
             for(let solve of data.eachYearSolveCount){
                 this.lineChartData[0].data.push(solve.solved);
             }
-            console.log(data);
-
         }
-    } ,
+    },
 }
 </script>
 

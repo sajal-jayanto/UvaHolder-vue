@@ -28,6 +28,24 @@ const routes = [
             else next();
         }
     },
+    {
+        path:'/submissions',
+        name: 'Submissions',
+        component : () => import('../views/pages/SubmissionsPage.vue'),
+        beforeEnter : (to, from, next) => {
+            if(localStorage.getItem('userId') === null) next("/login");
+            else next();
+        }
+    },
+    {
+        path:'/search-submissions',
+        name: 'SearchSubmissions',
+        component : () => import('../views/pages/SearchProblemPage.vue'),
+        beforeEnter : (to, from, next) => {
+            if(localStorage.getItem('userId') === null) next("/login");
+            else next();
+        }
+    },
     // {
     //     path: '/about',
     //     name: 'About',

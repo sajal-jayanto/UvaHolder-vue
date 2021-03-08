@@ -87,6 +87,46 @@ export const userSubmissionDataDecode = ( data ) => {
 
 }
 
+export const userSubmissionDataDecodeAsTable = ( data ) => {
+
+    return new Promise(resolve => {
+        
+        const deCodeData = {
+            name : data.name,
+            uname : data.uname,
+            submissions : []
+        };
+
+        const problemsList = JSON.parse(localStorage.getItem("problemsList"));
+        
+        for(const sub of data.subs) {
+            let position = findProblemByProblemId(sub[1]);
+
+            const submisson = {
+                submissionId : sub[0],
+                numberWithName : `${problemsList[position][1]} - ${problemsList[position][2]}`,
+                verdict : getVerdict(sub[2]),
+                language : getLanguage(sub[5]),
+                runtime : (sub[3] / 1000).toFixed(3),
+                bestRunTime : (problemsList[position][4] / 1000).toFixed(3),
+                rank : sub[6] !== -1 ? sub[6] : '-',
+                submissionTime : timeConverter(sub[4])
+            }
+
+            deCodeData.submissions.push(submisson);
+        }
+
+        deCodeData.submissions.sort((a , b) => {
+            if(a.submissionId > b.submissionId) return -1;
+            return 1;
+        })
+
+
+        resolve(deCodeData);
+    })
+
+} 
+
 
 
 export const findProblemByProblemId = (problemId) => {
